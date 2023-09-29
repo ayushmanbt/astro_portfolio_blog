@@ -1,0 +1,22 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+---
+
+
+<h3 class="mb-3">My Projects</h3>
+
+<div class="project_container">
+    <ProjectCard />
+
+
+</div>
+
+
+
+<style>
+    .project_container {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: 1fr 1fr;
+    }
+</style>

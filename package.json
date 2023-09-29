@@ -1,0 +1,16 @@
+{
+  "name": "astro_portfolio_blog",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^3.0.5",
+    "astro-icon": "^0.8.1"
+  }
+}

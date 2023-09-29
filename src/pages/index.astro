@@ -1,0 +1,70 @@
+---
+import BaseTemplate from "../templates/BaseTemplate.astro"
+import TopCard from "../components/TopCard.astro"
+import Technologies from "../components/Technologies.astro";
+import Internships from "../components/Internships.astro";
+import OtherExperiences from "../components/OtherExperiences.astro";
+import Projects from "../components/Projects.astro";
+---
+
+<BaseTemplate title="Portfolio : Ayushman Bilas Thakur">
+
+	<meta name="description" content="This is the portfolio of a full-stack web developer - Ayushman Bilas Thakur" slot="meta-tags">
+
+	<TopCard />
+	<div class="about">
+		<h2>Who am I?</h2>
+		<p>MS in computer science student at Arizona State University (Tentative Graduation - Spring 2024). Efficient with technologies like <b>React.js</b>, <b>Typescript, Javascript</b>, <b>HTML5</b>, <b>CSS3</b> and other web related technologies.
+		</p>
+		<p>One of my out-of-the trade skills is teaching, which I have had chance of doing in two seperate occassions as an Instructor and also as a grader at ASU</p>
+		<p>During my Masters, Cybersecurity and Operating System, especially Linux Kernel programming has been something I think interesting! Also as a part of my curriculam I have done some basic Capture The Flags.</p>
+		<p>Web Design is something I have keen interest in, although I don't think myself as a professional in this but year by year my skills have grown in it.</p>
+
+		<br />
+
+		<p>
+			<h2>Things I love doing</h2> 
+
+			<ul class="sliding-skills">
+				<li>Full-stack web development</li>
+				<li>Teaching/Instructing</li>
+				<li>Youtube tutorial videos</li>
+				<li>Blogging</li>
+			</ul>
+		</p>
+	</div>
+
+	<Technologies />
+
+	<Internships />
+
+	<OtherExperiences />
+
+	<Projects />
+
+</BaseTemplate>
+
+
+<style is:global>	
+	.sliding-skills {
+    	display: flex;
+    	flex-wrap: wrap;
+    	gap: 10px;
+	}
+
+	.light .sliding-skills li {
+		border: 2px solid black;
+	}
+
+
+	.sliding-skills li{
+		position: relative;
+		list-style: none;
+		background-color: var(--highlight);
+		color: var(--highlight-contrast);
+		padding: 3px 15px;
+		border-radius: 20px;
+		transform-origin:left;
+		transition: transform 0.1s ease;
+	}
+</style>

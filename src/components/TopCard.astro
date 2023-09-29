@@ -1,0 +1,63 @@
+---
+import UsefulLinks from "./UsefulLinks.astro"
+---
+
+<div class="top-part">
+    <div class="right">
+        <h1 id="myname">Ayushman Bilas Thakur</h1>
+        <p>Full Stack Web developer, Cybersecurity enthusiast</p>
+
+        <UsefulLinks />
+        
+    </div>
+
+    <div>
+        <a href="./Ayushman Bilas Thakur.pdf" target="_blank" class="button" >View Resume</a>
+    </div>
+</div>
+
+<script src="../scripts/NameAnimation.ts" />
+
+<style>
+    .top-part{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 30px;
+	}
+
+	.top-part .right{
+	    width: 80%;
+	}
+
+	.top-part .right p{
+		display: block;
+		margin-top: 0.3em;
+		margin-bottom: 0.5em;
+	}
+	@media (max-width: 768px){
+		.top-part{
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		.top-part .right{
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+		}
+	}
+
+	@media (max-width: 500px){
+		.top-part .right h1{
+			font-size: 1.8rem;
+		}
+
+		.top-part .right p{
+			font-size: 0.8rem;
+		}
+	}
+</style>

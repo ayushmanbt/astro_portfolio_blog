@@ -1,0 +1,87 @@
+---
+import {Icon} from 'astro-icon';
+
+const {
+    icon, 
+    name, 
+    link,
+    lightcolor,
+    darkcolor,
+    isColored = false} 
+    = Astro.props
+
+
+    // console.log(lightColor, darkColor)
+---
+
+
+{
+    link ? 
+    <a class="technology" href={link} target="_blank">
+        
+        <Icon 
+            pack="mdi"
+            name={icon}
+            width="24px"
+        />
+
+        
+        <span class="text">{name}</span>
+    </a>
+    :
+    <div class:list={["technology", {isColored}]}>
+        <Icon 
+            name={icon}
+            width="24px"
+            class="icon"
+        />
+        <span class="text">{name}</span>
+    </div>
+}
+
+
+<style is:global define:vars = {{ lightcolor, darkcolor }}>
+
+    .light .isColored{
+        color: var(--lightcolor) !important;
+    }
+    
+    .dark .isColored{
+        color: var(--darkcolor) !important;
+    }
+    
+</style>
+
+<style>
+    a{
+        text-decoration: none;
+    }
+
+
+    .icon{
+        width: 24px;
+        margin: 0;
+        padding: 0;
+        transform-origin: top left;
+    }
+
+    a.technology .icon{
+        background-color: var(--punch);
+    }
+
+    a.technology:hover{
+        filter: brightness(1.5);
+    }
+
+    .technology{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: all 0.3s ease;
+    }
+
+    .technology .text{
+        font-size: 12px;
+    }
+
+</style>

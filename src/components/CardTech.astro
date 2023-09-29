@@ -1,0 +1,50 @@
+---
+
+import {Icon} from "astro-icon"
+
+const colors = ["#E3CD80", "#5C9DC1", "#80E39C"]
+
+const {iconName, name} = Astro.props
+
+const color = colors[Math.floor(Math.random() * colors.length)]
+---
+
+<div class="tech">
+    <Icon 
+        name={iconName}
+        width="20px"
+    />
+    <p>{name}</p>
+</div>
+
+
+
+<style is:global define:vars = {{color}}> 
+    .light .tech{
+        border: 2px solid black;
+    }
+
+     .tech{
+        background-color: var(--color);
+        color: black;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 5px 10px;
+        border-radius: 10px 0 0 10px;
+        transform: translateX(calc(100% - 40px));
+        cursor: pointer;
+        transition: transform 0.3s ease;
+    }
+
+    .tech p {
+        display: block;
+        font-weight: bold;
+    }
+
+    .tech:hover{
+        transform: translateX(0);
+        border: 2px solid black;
+        border-right: none;
+    }
+</style>
