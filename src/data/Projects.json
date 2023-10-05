@@ -1,0 +1,31 @@
+[
+    {
+        "name": "Pomodoro Timer",
+        "links": [
+            {
+                "name": "Github",
+                "icon": "github",
+                "link": "https://github.com/ayushmanbt/pomodoro-timer"
+            },
+            {
+                "name": "Live Version",
+                "icon": "link",
+                "link": "https://pmdrtimer.netlify.app/"
+            }
+        ],
+        "technologies": [
+            {
+                "name": "HTML5",
+                "icon": "cib:html5"
+            },
+            {
+                "name": "CSS3",
+                "icon": "cib:css3"
+            },
+            {
+                "name": "JavaScript",
+                "icon": "cib:javascript"
+            }
+        ]
+    }
+]

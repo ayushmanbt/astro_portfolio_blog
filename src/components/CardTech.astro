@@ -12,7 +12,7 @@ const color = colors[Math.floor(Math.random() * colors.length)]
 <div class="tech">
     <Icon 
         name={iconName}
-        width="20px"
+        class="icon"
     />
     <p>{name}</p>
 </div>
@@ -37,6 +37,10 @@ const color = colors[Math.floor(Math.random() * colors.length)]
         transition: transform 0.3s ease;
     }
 
+    .icon{
+        width: 20px;
+    }
+
     .tech p {
         display: block;
         font-weight: bold;
@@ -47,4 +51,21 @@ const color = colors[Math.floor(Math.random() * colors.length)]
         border: 2px solid black;
         border-right: none;
     }
+
+    @media (max-width: 800px){
+        .tech{
+            transform: translateX(0);
+            border: none;
+            border-radius: 10px;
+            padding: 5px;
+            font-size: 15px;
+        }
+        .tech p{
+            font-weight: normal;
+        }
+        .icon{
+            width: 15px;
+        }
+    }
+
 </style>
