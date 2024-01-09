@@ -26,14 +26,19 @@ const FromDarkToLight = () => {
 }
 
 
-
-if (window.localStorage.getItem("mode")){
-    if(window.localStorage.getItem("mode") == 'dark') FromLightToDark();
-    else FromDarkToLight();
-}
-else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     FromLightToDark();
 }
+
+
+window.matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change',({ matches }) => {
+  if (matches) {
+    FromDarkToLight();
+  } else {
+    FromLightToDark();
+  }
+})
 
 function changemode () {
     if(!body) return

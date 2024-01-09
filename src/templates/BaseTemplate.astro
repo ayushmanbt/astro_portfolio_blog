@@ -14,6 +14,10 @@ const {title} = Astro.props
     <link rel="shortcut icon" href="/favicon.ico">
 </head>
 <body class="light">
+    <!-- This is a pane used for the simple transition animation -->
+    <div class="pane">
+        
+    </div>
     <button id="changer">
         <Icon
             name="mdi:theme-light-dark"
@@ -38,7 +42,7 @@ const {title} = Astro.props
     --bg-light:                 #ffffff;
     --text-primary-light:       #22223b;
     --text-secondary-light:     #4a4e69;
-    --card-bg-light:            #e3e8ec;
+    --card-bg-light:            #cfd7de;
     --punch-light:              #5150a5;
     --punch-contrast-light:     white;
     --highlight-light:          #ffa46e; 
@@ -52,8 +56,9 @@ const {title} = Astro.props
     --punch-contrast-dark:     #1d1d2b;
     --highlight-dark:          #2b4188; 
     --highlight-contrast-dark: #eee;
-}
 
+    --transition-animation-timing: 0.7s;
+}
 
 *{
     margin: 0;
@@ -61,6 +66,53 @@ const {title} = Astro.props
     box-sizing: border-box;
 }
 
+
+.pane {
+    position: fixed;
+    pointer-events: none;
+    width: 100dvw;
+    height: 100dvh;
+    /* background-color: var(--bg-dark); */
+    z-index: 999;
+}
+
+.light .pane{
+    animation: darktolight var(--transition-animation-timing) ease-in-out forwards;
+}
+
+.dark .pane{
+    animation: lighttodark var(--transition-animation-timing) ease-in-out forwards;
+}
+
+@keyframes darktolight {
+    0%{
+        opacity: 1;
+        background-color: var(--bg-dark);
+    }
+    60%{
+        opacity: 1;
+        background-color: var(--bg-light);
+    }
+    100%{
+        opacity: 0;
+        background-color: var(--bg-light);
+    }
+}
+
+@keyframes lighttodark {
+    0%{
+        opacity: 1;
+        background-color: var(--bg-light);
+    }
+    60%{
+        opacity: 1;
+        background-color: var(--bg-dark);
+    }
+    100%{
+        opacity: 0;
+        background-color: var(--bg-dark);
+    }
+}
 
 body::-webkit-scrollbar {
   width: 1em;
@@ -110,6 +162,15 @@ body.dark {
 body{
     background: var(--bg);
     color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -131,8 +192,9 @@ a{
     cursor: pointer;
     transition: transform 0.3s ease;
     background-color: var(--punch);
+    color: var(--bg);
     border: none;
-    z-index: 999;
+    z-index: 998;
 }
 
 #changer:hover,
