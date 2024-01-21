@@ -1,14 +1,52 @@
 ---
 import BaseTemplate from "../../templates/BaseTemplate.astro"
+import { getCollection } from "astro:content";
+
+let blogposts = await getCollection('blog');
+blogposts.toSorted((a,b) => a.data.published_at.valueOf() - b.data.published_at.valueOf());
+blogposts = blogposts.filter(b => b.data.published);
 ---
 
 <BaseTemplate title="Ayushman's Blog">
 
 	<meta name="description" content="The blogs about the shenanigans I do as a full-stack web developer, cybersecurity enthusiaist and a curious soul" slot="meta-tags">
 
-	<div class="base">
-        <h1>Blog Posts</h1>
-        <p>The blog posts here are about the things I learn and find interesting, they are more like personal notebook open to public!</p>
-	</div>
+
+	<h1>Blog Posts</h1>
+	<p class="catch">The blog posts here are about the things I learn and find interesting, they are more like personal notebook open to public!</p>
+
+	{
+		blogposts.length == 0 
+		&& 
+		<div>
+			<p class="notice">No posts currently published! 😢</p>
+			<a href="/">Return to portfolio</a>
+		</div>
+	}
+
+	{
+		blogposts.map(blog => 
+			(
+				<a href={`/blog/${blog.slug}`}><h1>{blog.data.title}</h1></a>
+				<p>{blog.data.description}</p>
+			)
+		)
+	}
+
 
 </BaseTemplate>
+
+<style scoped>
+
+	h1{
+		color: var(--punch);
+	}
+
+	.catch{
+		margin-bottom: 10px;
+	}
+
+	.notice{
+		font-size: x-large;
+	}
+</style>

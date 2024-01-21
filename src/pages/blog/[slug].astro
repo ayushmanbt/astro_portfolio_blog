@@ -1,0 +1,73 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import BaseTemplate from "../../templates/BaseTemplate.astro";
+
+//ssg
+export const getStaticPaths = (async() => {
+    const blogposts = await getCollection('blog');
+    const paths = blogposts.map(blog => {
+        return {
+            params: {
+                slug: blog.slug,
+            },
+        }
+    })
+    return paths;
+}) satisfies GetStaticPaths;
+
+//dcg
+const blogposts = await getCollection('blog');
+const {slug} = Astro.params
+const blog = blogposts.filter(blog => blog.slug == slug)[0]
+const { Content } = await blog.render();
+---
+
+<BaseTemplate title={blog.data.title + " Blog | Ayushman Bilas Thakur"}>
+    <meta name="description" content={blog.data.description} slot="meta-tags">
+    <meta name="tags" content={blog.data.tags.join(", ")} slot="meta-tags">
+    {!blog.data.published && <meta name="robots" content="noindex" slot="meta-tags">}
+
+    <div class="blogwrap">
+        {!blog.data.published && <div class="draft-banner">Draft Version</div>}
+        <h1 class="title">{blog.data.title}</h1>
+        <p class="date">Published on: {blog.data.published_at.toDateString()}</p>
+        <hr>
+        <!-- The styles of blog content were somehow not working in the html here so shifted them with the base styles -->
+        <div class="blog-content">
+            <Content />
+        </div>
+    </div>
+</BaseTemplate>
+
+
+
+<style>
+    
+    .blogwrap{
+        width: min(60ch, 90%);
+        margin: 0 auto;
+    }
+
+    .draft-banner{
+        padding: 20px;
+        text-align: center;
+        background-color: var(--card-bg);
+        color: var(--punch);
+        margin-bottom: 10px;
+    }
+
+    .title{
+        font-size: 3rem;
+        color: var(--punch);
+        margin-bottom: 0 !important;
+    }
+
+    .date{
+        font-size: 0.8rem;
+        margin-bottom: 5px;
+    }
+    hr{
+        margin-bottom: 10px;
+    }
+</style>
