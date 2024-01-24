@@ -3,7 +3,7 @@ import BaseTemplate from "../../templates/BaseTemplate.astro"
 import { getCollection } from "astro:content";
 
 let blogposts = await getCollection('blog');
-blogposts.toSorted((a,b) => a.data.published_at.valueOf() - b.data.published_at.valueOf());
+// blogposts.toSorted((a,b) => a.data.published_at.valueOf() - b.data.published_at.valueOf());
 blogposts = blogposts.filter(b => b.data.published);
 ---
 
