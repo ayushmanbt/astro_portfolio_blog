@@ -15,12 +15,12 @@ const socials = [
 	{
 		icon: "youtube",
 		name: "YouTube",
-		link: "https://www.youtube.com/@webbingmylife"
+		link: "https://www.youtube.com/@somuchcode"
 	},
 	{
 		icon: "dev-to",
 		name: "Dev.to",
-		link: "https://dev.to/ayushmanbthakur"
+		link: "https://dev.to/abthakur"
 	},
 	{
 		icon: "email",
@@ -40,6 +40,8 @@ const socials = [
     .useful_links{
         display: flex;
         gap: 5px;
+        width: 100%;
+        flex-wrap: wrap;
     }
 
     .useful_links a{
@@ -83,19 +85,9 @@ const socials = [
         }
     }
 
-    @media(max-width: 500px){
+    @media(max-width: 768px){
         .useful_links{
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            place-items: center;
+            justify-content: center;
         }
-        .useful_links>*:nth-child(2n + 1):nth-last-of-type(1){
-            grid-column: span 2;
-        }
-        /* .useful_links a{
-            animation: none;
-            transform: translatey(0px);
-            opacity: 1;
-        } */
     }
 </style>

@@ -3,7 +3,7 @@ import UsefulLinks from "./UsefulLinks.astro"
 ---
 
 <div class="top-part">
-    <div class="right">
+    <div class="intro">
 		<h1 id="myname">Ayushman Bilas Thakur</h1>
 		
         <p>Full Stack Web developer, Cybersecurity enthusiast, Looking for a full-time role</p>
@@ -25,38 +25,25 @@ import UsefulLinks from "./UsefulLinks.astro"
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		margin-bottom: 30px;
+		margin-bottom: 20px;
 		gap: 10px
 	}
 
-	.top-part .right{
+	.top-part .intro{
 	    width: 70%;
 		flex: 2;
 	}
 
-	.top-part .right p{
+	.top-part .intro h1{
+		margin-bottom: 0;
+		line-height: 1;
+	}
+
+	.top-part .intro p{
 		display: block;
-		margin-top: 0.3em;
-		margin-bottom: 0.5em;
+		margin: 5px 0;
 	}
-
-
-	@media (max-width: 768px){
-		.top-part{
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-		}
-		.top-part .right{
-			width: 100%;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			text-align: center;
-		}
-	}
-
+	
 	.namebox{
 		position: relative;
 	}
@@ -68,6 +55,58 @@ import UsefulLinks from "./UsefulLinks.astro"
 		justify-content: center;
 		align-items: center;
 	}
+
+
+	.button{
+		position: relative;
+		display: block;
+		text-decoration: none;
+		
+		/* border: 2px solid var(--text-primary); */
+		border: none;
+		padding: 12px 20px;
+		
+		border-radius: 10px;
+		font-weight: bold;
+		cursor: pointer;
+		overflow: hidden;
+		transition: color 0.5s ease;
+		color: var(--punch-contrast);
+	}
+
+
+	.button::before,
+	.button::after
+	{
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	.button::after{
+		background-color: var(--punch);
+		z-index: -2;
+	}
+
+	.button::before{
+		background-color: var(--text-primary);
+		z-index: -1;
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: all 0.3s ease;
+	}
+
+	.button:hover::before{
+		transform: scaleX(1);
+	}
+
+	.button:hover{
+		color: var(--bg);transition: all 0.3s ease;
+	}
+
 
 	.outline{
 		text-decoration: none;
@@ -86,10 +125,45 @@ import UsefulLinks from "./UsefulLinks.astro"
 		color: var(--punch-contrast);
 	}
 
-	@media (max-width: 500px){
-		.top-part .right{
-			margin-bottom: 20px !important;
+	@media (max-width: 960px) {
+		.buttons{
+			flex-direction: column;
+			align-items: flex-end;
 		}
+
+		.buttons a{
+			width: 75%; 
+			text-align: right;
+		}
+	}
+
+	@media (max-width: 768px){
+		.top-part{
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		.top-part .intro{
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+		}
+		.buttons{
+			flex-direction: row;
+			width: 80%;
+			align-items: stretch;
+		}
+		.buttons a{
+			flex: 1;
+			text-align: center;
+		}
+	}
+
+
+	@media (max-width: 500px){
 		.top-part .right h1{
 			font-size: 1.8rem;
 		}
@@ -98,7 +172,17 @@ import UsefulLinks from "./UsefulLinks.astro"
 			font-size: 0.8rem;
 		}
 		.buttons{
-			flex-direction: row;
+			flex-direction: column;
+			gap: 10px;
+		}
+		.buttons a{
+			width: 100%;
+		}
+	}
+
+	@media (max-width: 400px) {
+		.top-part .intro h1{
+			font-size: 1.6rem;
 		}
 	}
 </style>
