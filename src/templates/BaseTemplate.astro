@@ -1,363 +1,365 @@
 ---
-import {Icon} from "astro-icon"
-const {title} = Astro.props
+import { Icon } from "astro-icon";
+const { title } = Astro.props;
 ---
 
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <slot name="meta-tags"/>
-    <title>{title}</title>
-    <link rel="shortcut icon" href="/favicon.ico">
-</head>
-<body class="light">
-    <!-- This is a pane used for the simple transition animation -->
-    <div class="pane"></div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <slot name="meta-tags" />
+        <title>{title}</title>
+        <link rel="shortcut icon" href="/favicon.ico" />
+    </head>
+    <body class="light">
+        <!-- This is a pane used for the simple transition animation -->
+        <div class="pane"></div>
 
-    <button id="changer" type="button" >
-        <Icon
-            name="mdi:theme-light-dark"
-            width="20px"
-        />
-    </button>
-    <dialog id="menu">
-        <h3>Choose Theme</h3>
-        <div class="buttons">
-            <button type="submit" id="light_button">Light</button>
-            <button type="submit" id="dark_button">Dark</button>
-            <button type="submit" id="system_button">System</button>
+        <button id="changer" type="button">
+            <Icon name="mdi:theme-light-dark" width="20px" />
+        </button>
+        <dialog id="menu">
+            <h3>Choose Theme</h3>
+            <div class="buttons">
+                <button type="submit" id="light_button">Light</button>
+                <button type="submit" id="dark_button">Dark</button>
+                <button type="submit" id="system_button">System</button>
+            </div>
+        </dialog>
+        <div class="container">
+            <slot />
         </div>
-    </dialog>
-    <div class="container">
-        <slot />
-    </div>
-    <div class="footer">
-        Ayushman Bilas Thakur ❤️ 2023
-    </div>
-</body>
+        <div class="footer">Ayushman Bilas Thakur ❤️ 2024</div>
+    </body>
 
-<script src="../scripts/LightDarkDetector.ts"/>
+    <script src="../scripts/LightDarkDetector.ts"></script>
 
-<style is:global>
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+    <style is:global>
+        @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
 
-[popover]{
-    inset: unset;
-    bottom: anchor(top);
-}
+        [popover] {
+            inset: unset;
+            bottom: anchor(top);
+        }
 
-:root{
-    --bg-light:                 #ffffff;
-    --text-primary-light:       #22223b;
-    --text-secondary-light:     #4a4e69;
-    --card-bg-light:            #cfd7de;
-    --punch-light:              #5150a5;
-    --punch-contrast-light:     white;
-    --highlight-light:          #ffa46e; 
-    --highlight-contrast-light: #141420;
+        :root {
+            --bg-light: #ffffff;
+            --text-primary-light: #22223b;
+            --text-secondary-light: #4a4e69;
+            --card-bg-light: #cfd7de;
+            --punch-light: #5150a5;
+            --punch-contrast-light: white;
+            --highlight-light: #ffa46e;
+            --highlight-contrast-light: #141420;
 
-    --bg-dark:                 #1b1c27;
-    --text-primary-dark:       #f0f0fd;
-    --text-secondary-dark:     #b1b4c5;
-    --card-bg-dark:            #333646;
-    --punch-dark:              #ffc25c;
-    --punch-contrast-dark:     #1d1d2b;
-    --highlight-dark:          #2b4188; 
-    --highlight-contrast-dark: #eee;
+            --bg-dark: #1b1c27;
+            --text-primary-dark: #f0f0fd;
+            --text-secondary-dark: #b1b4c5;
+            --card-bg-dark: #333646;
+            --punch-dark: #ffc25c;
+            --punch-contrast-dark: #1d1d2b;
+            --highlight-dark: #2b4188;
+            --highlight-contrast-dark: #eee;
 
-    --transition-animation-timing: 0.7s;
-}
+            --transition-animation-timing: 0.7s;
+        }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        .pane {
+            position: fixed;
+            pointer-events: none;
+            width: 100dvw;
+            height: 100dvh;
+            /* background-color: var(--bg-dark); */
+            z-index: 999;
+        }
 
-.pane {
-    position: fixed;
-    pointer-events: none;
-    width: 100dvw;
-    height: 100dvh;
-    /* background-color: var(--bg-dark); */
-    z-index: 999;
-}
+        .light .pane {
+            animation: darktolight var(--transition-animation-timing)
+                ease-in-out forwards;
+        }
 
-.light .pane{
-    animation: darktolight var(--transition-animation-timing) ease-in-out forwards;
-}
+        .dark .pane {
+            animation: lighttodark var(--transition-animation-timing)
+                ease-in-out forwards;
+        }
 
-.dark .pane{
-    animation: lighttodark var(--transition-animation-timing) ease-in-out forwards;
-}
+        @keyframes darktolight {
+            0% {
+                opacity: 1;
+                background-color: var(--bg-dark);
+            }
+            60% {
+                opacity: 1;
+                background-color: var(--bg-light);
+            }
+            100% {
+                opacity: 0;
+                background-color: var(--bg-light);
+            }
+        }
 
-@keyframes darktolight {
-    0%{
-        opacity: 1;
-        background-color: var(--bg-dark);
-    }
-    60%{
-        opacity: 1;
-        background-color: var(--bg-light);
-    }
-    100%{
-        opacity: 0;
-        background-color: var(--bg-light);
-    }
-}
+        @keyframes lighttodark {
+            0% {
+                opacity: 1;
+                background-color: var(--bg-light);
+            }
+            60% {
+                opacity: 1;
+                background-color: var(--bg-dark);
+            }
+            100% {
+                opacity: 0;
+                background-color: var(--bg-dark);
+            }
+        }
 
-@keyframes lighttodark {
-    0%{
-        opacity: 1;
-        background-color: var(--bg-light);
-    }
-    60%{
-        opacity: 1;
-        background-color: var(--bg-dark);
-    }
-    100%{
-        opacity: 0;
-        background-color: var(--bg-dark);
-    }
-}
+        body::-webkit-scrollbar {
+            width: 1em;
+        }
 
-body::-webkit-scrollbar {
-  width: 1em;
-}
- 
-body::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
- 
-body::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
-}
+        body::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
 
-@media(max-width:500px){
-    body::-webkit-scrollbar {
-       width: 0em;
-    }
-}
+        body::-webkit-scrollbar-thumb {
+            background-color: darkgrey;
+            outline: 1px solid slategrey;
+        }
 
+        @media (max-width: 500px) {
+            body::-webkit-scrollbar {
+                width: 0em;
+            }
+        }
 
-body.light {
-    --bg:             var(--bg-light);
-    --text-primary:   var(--text-primary-light);
-    --text-secondary: var(--text-secondary-light);
-    --card-bg:        var(--card-bg-light);
-    --punch:          var(--punch-light);
-    --punch-contrast: var(--punch-contrast-light);
-    --highlight:          var(--highlight-light);
-    --highlight-contrast: var(--highlight-contrast-light);
-}
+        body.light {
+            --bg: var(--bg-light);
+            --text-primary: var(--text-primary-light);
+            --text-secondary: var(--text-secondary-light);
+            --card-bg: var(--card-bg-light);
+            --punch: var(--punch-light);
+            --punch-contrast: var(--punch-contrast-light);
+            --highlight: var(--highlight-light);
+            --highlight-contrast: var(--highlight-contrast-light);
+        }
 
+        body.dark {
+            --bg: var(--bg-dark);
+            --text-primary: var(--text-primary-dark);
+            --text-secondary: var(--text-secondary-dark);
+            --card-bg: var(--card-bg-dark);
+            --punch: var(--punch-dark);
+            --punch-contrast: var(--punch-contrast-dark);
+            --highlight: var(--highlight-dark);
+            --highlight-contrast: var(--highlight-contrast-dark);
+        }
 
-body.dark {
-    --bg:             var(--bg-dark);
-    --text-primary:   var(--text-primary-dark);
-    --text-secondary: var(--text-secondary-dark);
-    --card-bg:        var(--card-bg-dark);
-    --punch:          var(--punch-dark);
-    --punch-contrast: var(--punch-contrast-dark);
-    --highlight:          var(--highlight-dark);
-    --highlight-contrast: var(--highlight-contrast-dark);
+        body {
+            background: var(--bg);
+            color: var(--text-secondary);
+            display: flex;
+            flex-direction: column;
+            min-height: 100dvh;
+        }
 
-}
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
 
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
 
-body{
-    background: var(--bg);
-    color: var(--text-secondary);
-    display: flex;
-    flex-direction: column;
-    min-height: 100dvh;
-}
+        .blog-content h1,
+        .blog-content h2,
+        .blog-content h3,
+        .blog-content h4,
+        .blog-content h5 {
+            margin: 10px 0 !important;
+        }
 
-.container{
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
+        a {
+            color: var(--punch);
+        }
 
-h1,h2,h3,h4,h5,h6{
-    color: var(--text-primary);
-    margin-bottom: 0.5rem;
-}
+        #changer {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            background-color: var(--punch);
+            color: var(--bg);
+            border: none;
+            z-index: 998;
+        }
 
-.blog-content h1,
-.blog-content h2,
-.blog-content h3,
-.blog-content h4,
-.blog-content h5{
-       margin: 10px 0 !important;
-}
+        #changer:hover,
+        #changer:hover > img {
+            transform-origin: center;
+            transform: scale(1.2);
+        }
 
-a{
-    color: var(--punch);
-}
+        #changer:hover > img {
+            transform: scale(1.4);
+        }
 
-#changer{
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    background-color: var(--punch);
-    color: var(--bg);
-    border: none;
-    z-index: 998;
-}
+        #menu {
+            position: fixed;
+            border-radius: 10px;
+            top: calc(100dvh - 185px);
+            left: calc(100dvw - 65px);
+            translate: -100%;
+            background-color: var(--highlight);
+            padding: 20px;
+            font-family: "Nunito", sans-serif;
+            min-width: 200px;
+        }
 
-#changer:hover,
-#changer:hover > img {
-    transform-origin: center;
-    transform: scale(1.2);
-}
+        #menu h3 {
+            margin-bottom: 10px;
+        }
 
-#changer:hover > img {
-    transform: scale(1.4);
-}
+        .scaleup {
+            transform-origin: bottom right;
+            animation: scaleup 0.3s forwards ease-in-out;
+        }
 
-#menu{
-    position: fixed;
-    border-radius: 10px;
-    top: calc(100dvh - 185px);
-    left: calc(100dvw - 65px);
-    translate: -100%;
-    background-color: var(--highlight);
-    padding: 20px;
-    font-family: 'Nunito', sans-serif;
-    min-width: 200px;
-}
+        @keyframes scaleup {
+            0% {
+                scale: 0;
+            }
+            100% {
+                scale: 1;
+            }
+        }
 
-#menu h3{
-    margin-bottom: 10px;
-}
+        #menu button {
+            display: block;
+            border: none;
+            outline: none;
+            flex-basis: 100%;
+            background-color: var(--punch);
+            color: var(--punch-contrast);
+            /* width: 100%; */
+            padding: 5px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-.scaleup{
-    transform-origin: bottom right;
-    animation: scaleup 0.3s forwards ease-in-out;
-}
+        #menu button:hover {
+            background-color: var(--punch-contrast);
+            color: var(--punch);
+        }
 
-@keyframes scaleup {
-    0%{
-        scale: 0;
-    }
-    100%{
-        scale: 1;
-    }
-}
+        #menu .buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+        }
+        #menu::backdrop {
+            backdrop-filter: blur(10px);
+        }
 
-#menu button{
-    display: block;
-    border: none;
-    outline: none;
-    flex-basis: 100%;
-    background-color: var(--punch);
-    color: var(--punch-contrast);
-    /* width: 100%; */
-    padding: 5px 0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
+        @media (max-width: 500px) {
+            #menu {
+                top: calc(100dvh - 235px);
+                left: calc(100dvw - 45px);
+            }
+            #menu .buttons {
+                flex-direction: column;
+            }
+        }
 
-#menu button:hover{
-    background-color: var(--punch-contrast);
-    color: var(--punch);
-}
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 0;
+            padding-bottom: 20px;
+            font-family: "Nunito", sans-serif;
+        }
 
-#menu .buttons{
-    display: flex;
-    gap: 10px;
-    justify-content: space-between;
-}
-#menu::backdrop{
-    backdrop-filter: blur(10px);
-}
+        #myname {
+            text-transform: capitalize;
+        }
 
-@media (max-width: 500px){
-    #menu{
-        top: calc(100dvh - 235px);
-        left: calc(100dvw - 45px);
-    }
-    #menu .buttons{
-        flex-direction: column;    
-    }
-}
+        .image img {
+            width: 200px;
+            height: 200%;
+            border-radius: 50%;
+        }
 
+        .container > div {
+            margin-bottom: 1.2rem;
+        }
 
-.container{
-    width: 90%;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 30px 0;
-    padding-bottom: 20px;
-    font-family: 'Nunito', sans-serif;
-}
+        .container div h3 {
+            margin-bottom: 5px;
+        }
 
-#myname{
-    text-transform: capitalize;
-}
+        .tech-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            cursor: pointer;
+        }
 
-.image img{
-    width: 200px;
-    height: 200%;
-    border-radius: 50%;
-}
+        .mb-3 {
+            margin-bottom: 20px;
+        }
 
-.container > div{
-    margin-bottom: 1.2rem;
-}
+        .card a {
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
 
-.container div h3{
-    margin-bottom: 5px;
-}
+        .card a .icon {
+            transition: background-color 0.3s ease;
+        }
 
-.tech-container{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    cursor: pointer;
-}
+        .card a:hover {
+            color: var(--punch);
+        }
 
+        .card a:hover .icon {
+            background-color: var(--punch);
+        }
 
-
-
-.mb-3{
-    margin-bottom: 20px;
-}
-
-
-.card a{
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.card a .icon{
-    transition: background-color 0.3s ease;
-}
-
-.card a:hover{
-    color: var(--punch);
-}
-
-.card a:hover .icon{
-    background-color: var(--punch);
-}
-
-.footer{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    text-align: center;
-    padding-bottom: 40px;
-    font-weight: bold;
-}
-
-</style>
+        .footer {
+            font-family:
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Oxygen,
+                Ubuntu,
+                Cantarell,
+                "Open Sans",
+                "Helvetica Neue",
+                sans-serif;
+            text-align: center;
+            padding-bottom: 40px;
+            font-weight: bold;
+        }
+    </style>
+</html>
