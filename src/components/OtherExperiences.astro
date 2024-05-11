@@ -8,39 +8,36 @@ const opportunities = data;
 
 <h2>My Other Experiences</h2>
 <div class="internships">
-    {
-        opportunities.map(op => 
-            <InternshipCard 
-                position={op.position}
-                company={op.company}
-                description={op.description}
-                duration={op.duration}
-                technologies={op.technologies}
-            />
-        )
-    }
+  {
+    opportunities.map((op) => (
+      <InternshipCard
+        position={op.position}
+        company={op.company}
+        description={op.description}
+        duration={op.duration}
+        technologies={op.technologies}
+      />
+    ))
+  }
 </div>
 
-
 <style>
-    .internships{
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 1.2rem;
+  .internships {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.2rem;
+  }
+
+  @media (max-width: 1000px) {
+    .internships {
+      grid-template-columns: 1fr 1fr;
     }
+  }
 
-    @media (max-width: 1000px) {
-        .internships{
-            grid-template-columns: 1fr 1fr;
-        }
+  @media (max-width: 550px) {
+    .internships {
+      display: flex;
+      flex-direction: column;
     }
-
-
-
-    @media (max-width: 550px){
-        .internships{
-            display: flex;
-            flex-direction: column;
-        }
-    }
+  }
 </style>

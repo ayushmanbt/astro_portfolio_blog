@@ -1,59 +1,58 @@
 [
-    {
-        "position": "Full Stack Web Dev Intern",
-        "company": "Kesowa Ventures",
-        "description": "Built backend with express and frontend with vue.js for a non-exsisting admin page to upload map related tiff images and marker data collected by drones",
-        "duration": "09.2020 - 12.2020",
-        "technologies": [
-            {
-                "icon": "cib:vue-js",
-                "name": "Vue.js"
-            },
-            {
-                "icon": "mdi:nodejs",
-                "name": "express.js"
-
-            }
-        ]
-    },
-    {
-        "position": "Full Stack Web Developer",
-        "company": "Mind Webs",
-        "description": "Worked on various front end and back end projects for clients as well as experimental products, also interviewed potential candiates for front end developer position",
-        "duration": "03.2019 - 09.2020",
-        "technologies": [
-            {
-                "icon": "cib:react",
-                "name": "React.js"
-            },
-            {
-                "icon": "mdi:nodejs",
-                "name": "express.js"
-            },
-            {
-                "icon": "cib:php",
-                "name": "PHP"
-            }
-        ]
-    },
-    {
-        "position": "Software Dev Intern",
-        "company": "Dressworm",
-        "description": "Made vue.js based login page & integrated it with firebase",
-        "duration": "01.2020 - 03.2020",
-        "technologies": [
-            {
-                "icon": "cib:vue-js",
-                "name": "Vue.js"
-            },
-            {
-                "icon": "mdi:nodejs",
-                "name": "express.js"
-            },
-            {
-                "icon": "cib:firebase",
-                "name": "Firebase"
-            }
-        ]
-    }
+  {
+    "position": "Full Stack Web Dev Intern",
+    "company": "Kesowa Ventures",
+    "description": "Built backend with express and frontend with vue.js for a non-exsisting admin page to upload map related tiff images and marker data collected by drones",
+    "duration": "09.2020 - 12.2020",
+    "technologies": [
+      {
+        "icon": "cib:vue-js",
+        "name": "Vue.js"
+      },
+      {
+        "icon": "mdi:nodejs",
+        "name": "express.js"
+      }
+    ]
+  },
+  {
+    "position": "Full Stack Web Developer",
+    "company": "Mind Webs",
+    "description": "Worked on various front end and back end projects for clients as well as experimental products, also interviewed potential candiates for front end developer position",
+    "duration": "03.2019 - 09.2020",
+    "technologies": [
+      {
+        "icon": "cib:react",
+        "name": "React.js"
+      },
+      {
+        "icon": "mdi:nodejs",
+        "name": "express.js"
+      },
+      {
+        "icon": "cib:php",
+        "name": "PHP"
+      }
+    ]
+  },
+  {
+    "position": "Software Dev Intern",
+    "company": "Dressworm",
+    "description": "Made vue.js based login page & integrated it with firebase",
+    "duration": "01.2020 - 03.2020",
+    "technologies": [
+      {
+        "icon": "cib:vue-js",
+        "name": "Vue.js"
+      },
+      {
+        "icon": "mdi:nodejs",
+        "name": "express.js"
+      },
+      {
+        "icon": "cib:firebase",
+        "name": "Firebase"
+      }
+    ]
+  }
 ]

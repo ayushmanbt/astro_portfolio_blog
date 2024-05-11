@@ -1,115 +1,102 @@
 ---
 import Icon from "./IconContainer.astro";
-import CardTech from "./CardTech.astro"
+import CardTech from "./CardTech.astro";
 
 import ImageCarasoule from "./ImageCarasoule.astro";
 
 const { project } = Astro.props;
-
 ---
 
 <div class="project_card">
-   
-   <ImageCarasoule 
+  <ImageCarasoule
     images={project.images}
-    name={project.name.split(" ")[0]}
-   />
-   
-   <h2 class="project_name">{project.name}</h2>
+    iconName={project.name.split(" ")[0]}
+  />
 
+  <h2 class="project_name">{project.name}</h2>
 
-   <div class="project_content">
-        <div class="links">
+  <div class="project_content">
+    <div class="links">
+      {
+        project.links.map((l: any) => (
+          <Icon link={l.link} name={l.name} icon={l.icon} />
+        ))
+      }
+    </div>
 
-            {
-                project.links.map((l:any) => (
-                    <Icon 
-                        link={l.link}
-                        name={l.name}
-                        icon={l.icon}
-                    />
-                ))
-            }
-        </div>
+    <div class="desc" set:html={project.description} />
 
-        <div class="desc" set:html={project.description}>
-        </div>
-
-        <div class="techs">
-            {
-                project.technologies.map((tech: any) => 
-                    <CardTech name={tech.name} iconName={tech.icon} />
-                )
-            }
-        </div>
-   </div>
+    <div class="techs">
+      {
+        project.technologies.map((tech: any) => (
+          <CardTech name={tech.name} iconName={tech.icon} />
+        ))
+      }
+    </div>
+  </div>
 </div>
 
-
-
 <style is:global>
-    /* .light .project_card{
-        border: 2px solid black;
-    } */
-    .project_card{
-        background-color: var(--card-bg);
-        position: relative;
-        overflow: hidden;
-        border-radius: 10px;
+  /* .light .project_card{
+border: 2px solid black;
+} */
+  .project_card {
+    background-color: var(--card-bg);
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+
+  .image {
+    width: 100%;
+    height: auto;
+  }
+
+  .project_name {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    max-width: 85%;
+    padding: 10px;
+    color: var(--punch-dark);
+    font-size: 1.3rem;
+  }
+  .project_content {
+    margin: 10px 20px;
+  }
+  .links {
+    display: flex;
+    gap: 10px;
+  }
+
+  .techs {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .desc {
+    margin: 10px 0;
+    margin-bottom: 20px;
+  }
+
+  .project_card:nth-child(2n + 1):nth-last-of-type(1) {
+    grid-column: span 2;
+  }
+
+  @media (max-width: 800px) {
+    .image {
+      width: 100%;
     }
 
-
-    .image{
-        width: 100%;
-        height: auto;
+    .techs {
+      position: static;
+      flex-direction: row;
+      margin: 20px 0;
     }
-
-    .project_name{
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: rgba(0,0,0,0.7);
-        max-width: 85%;
-        padding: 10px;
-        color: var(--punch-dark);
-        font-size: 1.3rem;    
-    }
-    .project_content{
-        margin: 10px 20px;
-    }
-    .links{
-        display: flex;
-        gap: 10px;
-    }
-
-    .techs{
-        position: absolute;
-        top: 10px;
-        right: 0px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .desc{
-        margin: 10px 0;
-        margin-bottom: 20px;
-    }
-
-    .project_card:nth-child(2n + 1):nth-last-of-type(1){
-        grid-column: span 2;
-    }
-
-
-    @media (max-width: 800px) {
-        .image{
-            width: 100%;
-        }
-
-        .techs{
-            position: static;
-            flex-direction: row;
-            margin: 20px 0;
-        }
-    }
+  }
 </style>

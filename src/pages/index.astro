@@ -1,6 +1,6 @@
 ---
-import BaseTemplate from "../templates/BaseTemplate.astro"
-import TopCard from "../components/TopCard.astro"
+import BaseTemplate from "../templates/BaseTemplate.astro";
+import TopCard from "../components/TopCard.astro";
 import Technologies from "../components/Technologies.astro";
 import Internships from "../components/Internships.astro";
 import OtherExperiences from "../components/OtherExperiences.astro";
@@ -8,71 +8,88 @@ import Projects from "../components/Projects.astro";
 ---
 
 <BaseTemplate title="Portfolio : Ayushman Bilas Thakur">
+  <meta
+    name="description"
+    content="This is the portfolio of a full-stack web developer - Ayushman Bilas Thakur"
+    slot="meta-tags"
+  />
 
-	<meta name="description" content="This is the portfolio of a full-stack web developer - Ayushman Bilas Thakur" slot="meta-tags">
+  <TopCard />
+  <div class="about">
+    <div class="about_a">
+      <h2>Who am I?</h2>
+      <p>
+        Web Development enthusiaist efficient with technologies like <b
+          >React.js</b
+        >, <b>Typescript, Javascript</b>, <b>HTML5</b>, <b>CSS3</b> and many others.
+      </p>
+      <p>
+        Completing masters in computer science from Arizona State University on
+        Spring 2024, open to work as <b>Software Developer</b>,<b
+          >Web Developer</b
+        >,<b>Backend Developer</b> and other relevant positions. As specializing
+        in cybersecurity, I have some interest in web security.
+      </p>
+      <p>
+        One of my out-of-the trade skills is teaching, which I have had chance
+        of doing in two seperate occassions as an Instructor and also as a
+        grader at ASU
+      </p>
+      <p>
+        Web Design is something I have keen interest in, although I don't think
+        myself as a professional in this but year by year my skills have grown
+        in it.
+      </p>
+    </div>
 
-	<TopCard />
-	<div class="about">
-		<div class="about_a">
-			<h2>Who am I?</h2>
-			<p>Web Development enthusiaist efficient with technologies like <b>React.js</b>, <b>Typescript, Javascript</b>, <b>HTML5</b>, <b>CSS3</b> and many others. 
-			</p>
-			<p>Completing masters in computer science from Arizona State University on Spring 2024, open to work as <b>Software Developer</b>,<b>Web Developer</b>,<b>Backend Developer</b> and other relevant positions. As specializing in cybersecurity, I have some interest in web security.</p>
-			<p>One of my out-of-the trade skills is teaching, which I have had chance of doing in two seperate occassions as an Instructor and also as a grader at ASU</p>
-			<p>Web Design is something I have keen interest in, although I don't think myself as a professional in this but year by year my skills have grown in it.</p>
-		</div>
+    <p>
+      <h2>Things I love doing</h2>
 
-		<p>
-			<h2>Things I love doing</h2> 
+      <ul class="sliding-skills">
+        <li>Full-stack web development</li>
+        <li>Teaching/Instructing</li>
+        <li>Youtube tutorial videos</li>
+        <li>Blogging</li>
+      </ul>
+    </p>
+  </div>
 
-			<ul class="sliding-skills">
-				<li>Full-stack web development</li>
-				<li>Teaching/Instructing</li>
-				<li>Youtube tutorial videos</li>
-				<li>Blogging</li>
-			</ul>
-		</p>
-	</div>
+  <Technologies />
 
-	<Technologies />
+  <Internships />
 
-	<Internships />
+  <OtherExperiences />
 
-	<OtherExperiences />
-
-	<Projects />
-
+  <Projects />
 </BaseTemplate>
 
+<style is:global>
+  .about {
+    margin-bottom: 20px;
+  }
 
-<style is:global>	
-	.about{
-		margin-bottom: 20px;
-	}
+  .about_a {
+    margin-bottom: 20px;
+  }
 
-	.about_a{
-		margin-bottom: 20px;
-	}
+  .sliding-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 
-	.sliding-skills {
-    	display: flex;
-    	flex-wrap: wrap;
-    	gap: 10px;
-	}
+  /* .light .sliding-skills li {
+border: 2px solid black;
+} */
 
-	/* .light .sliding-skills li {
-		border: 2px solid black;
-	} */
-
-
-	.sliding-skills li{
-		position: relative;
-		list-style: none;
-		background-color: var(--highlight);
-		color: var(--highlight-contrast);
-		padding: 3px 15px;
-		border-radius: 20px;
-		transform-origin:left;
-		transition: transform 0.1s ease;
-	}
+  .sliding-skills li {
+    position: relative;
+    list-style: none;
+    background-color: var(--highlight);
+    color: var(--highlight-contrast);
+    padding: 3px 15px;
+    border-radius: 20px;
+    transform-origin: left;
+    transition: transform 0.1s ease;
+  }
 </style>

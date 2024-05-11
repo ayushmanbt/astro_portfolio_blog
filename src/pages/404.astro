@@ -1,27 +1,24 @@
 ---
-import BaseTemplate from "../templates/BaseTemplate.astro"
+import BaseTemplate from "../templates/BaseTemplate.astro";
 ---
 
 <BaseTemplate title="Portfolio : Ayushman Bilas Thakur">
+  <meta name="robots" content="noindex" slot="meta-tags" />
 
-	<meta name="robots" content="noindex" slot="meta-tags">
-
-	<div class="base">
-        <div class="wrap">
-            <h1>Sorry! This content is not available</h1>
-            <p>Return to <a href="/">homepage?</a></p>
-        </div>
-	</div>
-
+  <div class="base">
+    <div class="wrap">
+      <h1>Sorry! This content is not available</h1>
+      <p>Return to <a href="/">homepage?</a></p>
+    </div>
+  </div>
 </BaseTemplate>
 
-
-<style>	
-    .base{
-        display: grid;
-        place-items: center;
-        text-align: center;
-        height: 100%;
-        flex-grow: 1;
-    }
+<style>
+  .base {
+    display: grid;
+    place-items: center;
+    text-align: center;
+    height: 100%;
+    flex-grow: 1;
+  }
 </style>

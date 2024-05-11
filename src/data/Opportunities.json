@@ -1,51 +1,50 @@
 [
-    {
-        "position": "Grader",
-        "company": "Arizona State University",
-        "description": "Wroked as a grader in Arizona State University for the Advanced Operating Systems Course in Spring 2023, under professor Adil Ahmad. Helped with assignment and exam grading as well as doubt clearing for students regarding assignments",
-        "duration": "01.2023 - 12.2023",
-        "technologies": [
-            {
-                "icon": "cib:c",
-                "name": "Lanugage"
-            },
-            {
-                "icon": "cib:linux",
-                "name": "Kernel Programming"
-            }
-        ]
-    },
-    {
-        "position": "Instructor",
-        "company": "Introduction Computer Center",
-        "description": "Taught students of different age groups basics of programming using C, Java, Python and other programming languagess",
-        "duration": "01.2021 - 07.2022",
-        "technologies": [
-            {
-                "icon": "cib:c",
-                "name": "Lanugage"
-            },
-            {
-                "icon": "cib:python",
-                "name": "Python"
-            },
-            {
-                "icon": "cib:java",
-                "name": "Java"
-
-            }
-        ]
-    },
-    {
-        "position": "Content Writer (Contract)",
-        "company": "Agatton",
-        "description": "Gathered intel and reported about latest news in tech",
-        "duration": "12.2018 - 10.2019",
-        "technologies": [
-            {
-                "icon": "cib:wordpress",
-                "name": "Content Writing"
-            }
-        ]
-    }
+  {
+    "position": "Grader",
+    "company": "Arizona State University",
+    "description": "Wroked as a grader in Arizona State University for the Advanced Operating Systems Course in Spring 2023, under professor Adil Ahmad. Helped with assignment and exam grading as well as doubt clearing for students regarding assignments",
+    "duration": "01.2023 - 12.2023",
+    "technologies": [
+      {
+        "icon": "cib:c",
+        "name": "Lanugage"
+      },
+      {
+        "icon": "cib:linux",
+        "name": "Kernel Programming"
+      }
+    ]
+  },
+  {
+    "position": "Instructor",
+    "company": "Introduction Computer Center",
+    "description": "Taught students of different age groups basics of programming using C, Java, Python and other programming languagess",
+    "duration": "01.2021 - 07.2022",
+    "technologies": [
+      {
+        "icon": "cib:c",
+        "name": "Lanugage"
+      },
+      {
+        "icon": "cib:python",
+        "name": "Python"
+      },
+      {
+        "icon": "cib:java",
+        "name": "Java"
+      }
+    ]
+  },
+  {
+    "position": "Content Writer (Contract)",
+    "company": "Agatton",
+    "description": "Gathered intel and reported about latest news in tech",
+    "duration": "12.2018 - 10.2019",
+    "technologies": [
+      {
+        "icon": "cib:wordpress",
+        "name": "Content Writing"
+      }
+    ]
+  }
 ]
