@@ -1,248 +1,223 @@
 ---
 import Icon from "astro-icon";
-
 import { Image } from "astro:assets";
-
-const { images, name } = Astro.props;
-
-
+const { images, iconName } = Astro.props;
 const image_count = images.length;
 ---
 
-
 <div class="image_carasoul" id="carasoul">
-
-    {
-        images.map((image: any) => (
-            <Image 
-                src={image}
-                alt="Another project image"
-                class={`image ${name+"image"}`}
-           />
-        ))
-    }
-
-    
+  {
+    images.map((image: any) => (
+      <Image
+        src={image}
+        alt="Another project image"
+        class={`image ${iconName + "image"}`}
+      />
+    ))
+  }
 </div>
 
-
 <div class="controls">
-    <button class="control left" id={`${name}leftButton`}>
-        <Icon 
-            name="raphael:arrowleft"
-            width="15px"
-        />
-   </button>
-   
-   <button class="control" id={`${name}viewFullscreen`}>
-       View Image
-   </button>
+  <button class="control left" id={`${iconName}leftButton`}>
+    <Icon name="raphael:arrowleft" width="15px" />
+  </button>
 
-   <button class="control right" id={`${name}rightButton`}>
-        <Icon 
-            name="raphael:arrowright"
-            width="15px"
-        />
-   </button>
+  <button class="control" id={`${iconName}viewFullscreen`}> View Image </button>
 
+  <button class="control right" id={`${iconName}rightButton`}>
+    <Icon name="raphael:arrowright" width="15px" />
+  </button>
 
-   <dialog>
-       <img id={`${name}ImageHolder`} src="/icons/css3.svg" >
-       <button autofocus>
-            <Icon
-                name="ph:x-bold"
-                width="15px"
-            />
-       </button>
+  <dialog id="ImageViewer">
+    <img id={`${iconName}ImageHolder`} src="/icons/css3.svg" />
+    <button type="submit" id="anotherCloseButton">
+      <Icon name="ph:x-bold" width="15px" />
+    </button>
   </dialog>
 </div>
 
-<script define:vars={{image_count, name}} is:inline>
-    // using a pomise to create a sleep function
-    let sleep = (ms) => {
-        return new Promise(resolve => setTimeout(resolve, ms));
+<script define:vars={{ image_count, iconName }} is:inline>
+  // using a pomise to create a sleep function
+  let sleep = (ms) => {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  };
+
+  let currentIndex = 0;
+  const totalCount = image_count;
+  // console.log(totalCount);
+
+  const LeftButton = document.getElementById(`${iconName}leftButton`);
+  const RightButton = document.getElementById(`${iconName}rightButton`);
+  const ViewFullscreenButton = document.getElementById(
+    `${iconName}viewFullscreen`,
+  );
+  const dialog = document.getElementById("ImageViewer");
+  const image = document.querySelector("dialog img");
+  const closeButton = document.querySelector("#ImageViewer button");
+
+  const Images = [].slice.call(
+    document.getElementsByClassName(`${iconName}image`),
+  );
+
+  let check_left_side = () => {
+    if (currentIndex == 0) {
+      LeftButton.style.opacity = "0";
+      LeftButton.style.pointerEvents = "none";
+    } else {
+      LeftButton.style.opacity = "100%";
+      LeftButton.style.pointerEvents = "auto";
     }
+  };
 
-    let currentIndex = 0
-    const totalCount = image_count
-    // console.log(totalCount);
-
-    const LeftButton = document.getElementById(`${name}leftButton`)
-    const RightButton = document.getElementById(`${name}rightButton`)
-    const ViewFullscreenButton = document.getElementById(`${name}viewFullscreen`)
-    const dialog = document.querySelector("dialog");
-    const image = document.querySelector("dialog img");
-    const closeButton = document.querySelector("dialog button");
-
-
-    const Images = [].slice.call(document.getElementsByClassName(`${name}image`))
-
-    let check_left_side = () => {
-        if(currentIndex == 0){
-            LeftButton.style.opacity = "0"
-            LeftButton.style.pointerEvents = "none"
-        }
-        else{
-            LeftButton.style.opacity = "100%"
-            LeftButton.style.pointerEvents = "auto"
-        }
+  let check_right_side = () => {
+    if (currentIndex == totalCount - 1) {
+      RightButton.style.opacity = "0";
+      RightButton.style.pointerEvents = "none";
+    } else {
+      RightButton.style.opacity = "100%";
+      RightButton.style.pointerEvents = "auto";
     }
-    
-    let check_right_side = () => {
-        if(currentIndex == totalCount - 1){
-            RightButton.style.opacity = "0"
-            RightButton.style.pointerEvents = "none"
-        }
-        else{
-            RightButton.style.opacity = "100%"
-            RightButton.style.pointerEvents = "auto"
-        }
+  };
+
+  Images.forEach((e, i) => {
+    if (i == currentIndex) {
+      e.style.transform = "translateX(0)";
     }
+  });
 
-    Images.forEach((e,i) => {
-        if(i == currentIndex){
-            e.style.transform = "translateX(0)";
-        }
-    })
-
-    LeftButton.addEventListener("click", () => {
-        Images[currentIndex].style.transform = "translateX(100%)";
-        sleep(300);
-        currentIndex = currentIndex - 1
-        Images[currentIndex].style.transform = "translateX(0)";
-        check_left_side();
-        check_right_side();
-    });
-    
-    RightButton.addEventListener("click", async() => {        
-        Images[currentIndex].style.transform = "translateX(-100%)";
-        sleep(300);
-        currentIndex = currentIndex + 1
-        Images[currentIndex].style.transform = "translateX(0)";
-        check_left_side();
-        check_right_side();
-    });
-
-    ViewFullscreenButton.addEventListener("click", () => {
-        dialog.showModal();
-        image.setAttribute("src",Images[currentIndex].getAttribute("src"));
-    })
-    closeButton.addEventListener("click", ()=> {
-        dialog.close();
-    })
-
+  LeftButton.addEventListener("click", () => {
+    Images[currentIndex].style.transform = "translateX(100%)";
+    sleep(300);
+    currentIndex = currentIndex - 1;
+    Images[currentIndex].style.transform = "translateX(0)";
     check_left_side();
     check_right_side();
+  });
 
+  RightButton.addEventListener("click", async () => {
+    Images[currentIndex].style.transform = "translateX(-100%)";
+    sleep(300);
+    currentIndex = currentIndex + 1;
+    Images[currentIndex].style.transform = "translateX(0)";
+    check_left_side();
+    check_right_side();
+  });
 
+  ViewFullscreenButton.addEventListener("click", () => {
+    dialog.showModal();
+    image.setAttribute("src", Images[currentIndex].getAttribute("src"));
+  });
+  closeButton.addEventListener("click", () => {
+    dialog.close();
+  });
 
+  check_left_side();
+  check_right_side();
 </script>
 
-
 <style>
-    .image_carasoul{
-        overflow: hidden;
-        position: relative;
-        width: 100%;
-        aspect-ratio: 16/9;
-        margin-bottom: 10px;
-    }
+  .image_carasoul {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    margin-bottom: 10px;
+  }
 
-    .image_carasoul::after{
-        content: "View Full Size";
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: 50%;
-        height: 20%;
-        background-color: rgba(0,0,0,0.9);
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
+  .image_carasoul::after {
+    content: "View Full Size";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 20%;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
 
-    .image_carasoul::after:hover{
-        opacity: 1;
-    }
+  .image_carasoul::after:hover {
+    opacity: 1;
+  }
 
-    .image{
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left:0;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-    }
+  .image {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
 
-    .controls{
-        display: flex;
-        gap: 10px;
-        left: 0;
-        right: 0;
-        justify-content: center;
-        align-items: center;
-    }
+  .controls {
+    display: flex;
+    gap: 10px;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .control{
-        color: white;
-        background: rgba(0,0,0, 0.8);
-        outline: none;
-        border: none;
-        cursor: pointer;
-        transition: 
-            scale 0.3s ease,
-            background 0.3s ease;
-        padding: 10px;
-        border-radius: 10px;
-        font-size: 0.8rem;
-    }
+  .control {
+    color: white;
+    background: rgba(0, 0, 0, 0.8);
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition:
+      scale 0.3s ease,
+      background 0.3s ease;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+  }
 
-    .control:hover{
-        scale: 1.15;
-        background: rgba(0,0,0, 1);
-    }
+  .control:hover {
+    scale: 1.15;
+    background: rgba(0, 0, 0, 1);
+  }
 
-    dialog{
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: transparent;
-    }
+  dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+  }
 
-    dialog::backdrop {
-        background: rgba(0,0,0,0.8);
-    }
+  dialog::backdrop {
+    background: rgba(0, 0, 0, 0.8);
+  }
 
-    dialog img{
-        width: 80vw;
-        aspect-ratio: 16/9;
-    }
+  dialog img {
+    width: 80vw;
+    aspect-ratio: 16/9;
+  }
 
-    dialog button{
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        padding: 10px;
-        background-color: #e7463b;
-        cursor: pointer;
-        color: white;
-        outline: none;
-        border: none;
-        transition: all 0.3s ease;
-        border-radius: 50%;
-        width:45px;
-        height:45px;
-    }
+  dialog button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    background-color: #e7463b;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    border: none;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+  }
 
-    dialog button:hover{
-        background-color: #fd1403;
-        box-shadow: 2px 2px 5px rgba(0,0,0,0.6);
-        transform: scale(1.3);
-    }
-
+  dialog button:hover {
+    background-color: #fd1403;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    transform: scale(1.3);
+  }
 </style>

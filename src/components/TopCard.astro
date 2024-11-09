@@ -1,104 +1,188 @@
 ---
-import UsefulLinks from "./UsefulLinks.astro"
+import UsefulLinks from "./UsefulLinks.astro";
 ---
 
 <div class="top-part">
-    <div class="right">
-		<h1 id="myname">Ayushman Bilas Thakur</h1>
-		
-        <p>Full Stack Web developer, Cybersecurity enthusiast, Looking for a full-time role</p>
+  <div class="intro">
+    <h1 id="myname">Ayushman Bilas Thakur</h1>
 
-        <UsefulLinks />
-        
-    </div>
+    <p>
+      Full Stack Web developer, Cybersecurity enthusiast, Looking for a
+      full-time role
+    </p>
 
-    <div class="buttons">
-		<a href="/blog" class="outline">View Blog</a>
-        <a href="./Ayushman Bilas Thakur.pdf" target="_blank" class="button" >View Resume</a>
-    </div>
+    <UsefulLinks />
+  </div>
+
+  <div class="buttons">
+    <a href="/blog" class="outline">View Blog</a>
+    <a href="./Ayushman Bilas Thakur.pdf" target="_blank" class="button"
+      >View Resume</a
+    >
+  </div>
 </div>
 
-<script src="../scripts/NameAnimation.ts" />
+<script src="../scripts/NameAnimation.ts"></script>
 
 <style>
-    .top-part{
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin-bottom: 30px;
-		gap: 10px
-	}
+  .top-part {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
 
-	.top-part .right{
-	    width: 70%;
-		flex: 2;
-	}
+  .top-part .intro {
+    width: 70%;
+    flex: 2;
+  }
 
-	.top-part .right p{
-		display: block;
-		margin-top: 0.3em;
-		margin-bottom: 0.5em;
-	}
+  .top-part .intro h1 {
+    margin-bottom: 0;
+    line-height: 1;
+  }
 
+  .top-part .intro p {
+    display: block;
+    margin: 5px 0;
+  }
 
-	@media (max-width: 768px){
-		.top-part{
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-		}
-		.top-part .right{
-			width: 100%;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			text-align: center;
-		}
-	}
+  .namebox {
+    position: relative;
+  }
 
-	.namebox{
-		position: relative;
-	}
+  .buttons {
+    display: flex;
+    flex: 1;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
 
-	.buttons{
-		display: flex;
-		flex: 1;
-		gap: 20px;
-		justify-content: center;
-		align-items: center;
-	}
+  .button {
+    position: relative;
+    display: block;
+    text-decoration: none;
 
-	.outline{
-		text-decoration: none;
-		display: block;
-		background: none;
-		border: 2px solid var(--highlight-contrast);
-		padding: 10px 20px;
-		border-radius: 10px;
-		cursor: pointer;
-		transition: all 0.3s ease;
-		font-weight: bold;
-	}
+    /* border: 2px solid var(--text-primary); */
+    border: none;
+    padding: 12px 20px;
 
-	.outline:hover{
-		background-color: var(--highlight-contrast);
-		color: var(--punch-contrast);
-	}
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.5s ease;
+    color: var(--punch-contrast);
+  }
 
-	@media (max-width: 500px){
-		.top-part .right{
-			margin-bottom: 20px !important;
-		}
-		.top-part .right h1{
-			font-size: 1.8rem;
-		}
+  .button::before,
+  .button::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
 
-		.top-part .right p{
-			font-size: 0.8rem;
-		}
-		.buttons{
-			flex-direction: row;
-		}
-	}
+  .button::after {
+    background-color: var(--punch);
+    z-index: -2;
+  }
+
+  .button::before {
+    background-color: var(--text-primary);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: all 0.3s ease;
+  }
+
+  .button:hover::before {
+    transform: scaleX(1);
+  }
+
+  .button:hover {
+    color: var(--bg);
+    transition: all 0.3s ease;
+  }
+
+  .outline {
+    text-decoration: none;
+    display: block;
+    background: none;
+    border: 2px solid var(--highlight-contrast);
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+  }
+
+  .outline:hover {
+    background-color: var(--highlight-contrast);
+    color: var(--punch-contrast);
+  }
+
+  @media (max-width: 960px) {
+    .buttons {
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .buttons a {
+      width: 75%;
+      text-align: right;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .top-part {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .top-part .intro {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .buttons {
+      flex-direction: row;
+      width: 80%;
+      align-items: stretch;
+    }
+    .buttons a {
+      flex: 1;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .top-part .right h1 {
+      font-size: 1.8rem;
+    }
+
+    .top-part .right p {
+      font-size: 0.8rem;
+    }
+    .buttons {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .buttons a {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .top-part .intro h1 {
+      font-size: 1.6rem;
+    }
+  }
 </style>

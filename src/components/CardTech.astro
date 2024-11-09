@@ -1,71 +1,61 @@
 ---
-
-import {Icon} from "astro-icon"
-
-const colors = ["#E3CD80", "#5C9DC1", "#80E39C"]
-
-const {iconName, name} = Astro.props
-
-const color = colors[Math.floor(Math.random() * colors.length)]
+import { Icon } from "astro-icon";
+const colors = ["#E3CD80", "#5C9DC1", "#80E39C"];
+const { iconName, name } = Astro.props;
+const color = colors[Math.floor(Math.random() * colors.length)];
 ---
 
 <div class="tech">
-    <Icon 
-        name={iconName}
-        class="icon"
-    />
-    <p>{name}</p>
+  <Icon name={iconName} class="icon" />
+  <p>{name}</p>
 </div>
 
+<style is:global define:vars={{ color }}>
+  .light .tech {
+    border: 2px solid black;
+  }
 
+  .tech {
+    background-color: var(--color);
+    color: black;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 10px 0 0 10px;
+    transform: translateX(calc(100% - 40px));
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
 
-<style is:global define:vars = {{color}}> 
-    .light .tech{
-        border: 2px solid black;
+  .icon {
+    width: 20px;
+  }
+
+  .tech p {
+    display: block;
+    font-weight: bold;
+  }
+
+  .tech:hover {
+    transform: translateX(0);
+    border: 2px solid black;
+    border-right: none;
+  }
+
+  @media (max-width: 800px) {
+    .tech {
+      transform: translateX(0);
+      border: none;
+      border-radius: 10px;
+      padding: 5px;
+      font-size: 15px;
     }
-
-     .tech{
-        background-color: var(--color);
-        color: black;
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        padding: 5px 10px;
-        border-radius: 10px 0 0 10px;
-        transform: translateX(calc(100% - 40px));
-        cursor: pointer;
-        transition: transform 0.3s ease;
-    }
-
-    .icon{
-        width: 20px;
-    }
-
     .tech p {
-        display: block;
-        font-weight: bold;
+      font-weight: normal;
     }
-
-    .tech:hover{
-        transform: translateX(0);
-        border: 2px solid black;
-        border-right: none;
+    .icon {
+      width: 15px;
     }
-
-    @media (max-width: 800px){
-        .tech{
-            transform: translateX(0);
-            border: none;
-            border-radius: 10px;
-            padding: 5px;
-            font-size: 15px;
-        }
-        .tech p{
-            font-weight: normal;
-        }
-        .icon{
-            width: 15px;
-        }
-    }
-
+  }
 </style>

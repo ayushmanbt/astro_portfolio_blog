@@ -1,101 +1,95 @@
 ---
-import Icon from "./IconContainer.astro"
+import Icon from "./IconContainer.astro";
 
 const socials = [
-	{
-		icon: "github",
-		name: "GitHub",
-		link: "https://github.com/AyushmanBT"
-	},
-	{
-		icon: "linkedin",
-		name: "LinkedIn",
-		link: "https://www.linkedin.com/in/ayushmanbt"
-	},
-	{
-		icon: "youtube",
-		name: "YouTube",
-		link: "https://www.youtube.com/@webbingmylife"
-	},
-	{
-		icon: "dev-to",
-		name: "Dev.to",
-		link: "https://dev.to/ayushmanbthakur"
-	},
-	{
-		icon: "email",
-		name: "Email",
-		link: "mailto:ayushmanbt@skiff.com"
-	}
-]
-
+  {
+    icon: "github",
+    name: "GitHub",
+    link: "https://github.com/AyushmanBT",
+  },
+  {
+    icon: "linkedin",
+    name: "LinkedIn",
+    link: "https://www.linkedin.com/in/ayushmanbt",
+  },
+  {
+    icon: "youtube",
+    name: "YouTube",
+    link: "https://www.youtube.com/@somuchcode",
+  },
+  {
+    icon: "dev-to",
+    name: "Dev.to",
+    link: "https://dev.to/abthakur",
+  },
+  {
+    icon: "email",
+    name: "Email",
+    link: "mailto:ayushmanbt@skiff.com",
+  },
+];
 ---
 
 <div class="useful_links">
-    {socials.map(social => <Icon name={social.name} icon={social.icon} link={social.link}/></a>)}
+  {
+    socials.map((social) => (
+      <Icon name={social.name} icon={social.icon} link={social.link} />
+    ))
+  }
 </div>
 
-
 <style is:global>
-    .useful_links{
-        display: flex;
-        gap: 5px;
-    }
+  .useful_links {
+    display: flex;
+    gap: 5px;
+    width: 100%;
+    flex-wrap: wrap;
+  }
 
-    .useful_links a{
-        transform: translatey(30px);
-        opacity: 0;
-        animation: entry 0.4s ease-in forwards;
-        color: var(--punch);
-        text-decoration: none;
-        transition: all 0.3s;
-        display: block;
-    }
+  .useful_links a {
+    transform: translatey(30px);
+    opacity: 0;
+    animation: entry 0.4s ease-in forwards;
+    color: var(--punch);
+    text-decoration: none;
+    transition: all 0.3s;
+    display: block;
+  }
 
-    .useful_links a:nth-child(1){
-        animation-delay: 0s;
-    }
+  .useful_links a:nth-child(1) {
+    animation-delay: 0s;
+  }
 
-    .useful_links a:nth-child(2){
-        animation-delay: 0.1s;
-    }
+  .useful_links a:nth-child(2) {
+    animation-delay: 0.1s;
+  }
 
-    .useful_links a:nth-child(3){
-        animation-delay: 0.3s;
-    }
+  .useful_links a:nth-child(3) {
+    animation-delay: 0.3s;
+  }
 
-    .useful_links a:nth-child(4){
-        animation-delay: 0.4s;
-    }
+  .useful_links a:nth-child(4) {
+    animation-delay: 0.4s;
+  }
 
-    .useful_links a:nth-child(5){
-        animation-delay: 0.5s;
-    }
+  .useful_links a:nth-child(5) {
+    animation-delay: 0.5s;
+  }
 
-    @keyframes entry {
-        0%{
-            transform: translatey(30px);
-            opacity: 0;
-        }
-        100%{
-            transform: translatey(0px);
-            opacity: 1;
-        }
+  @keyframes entry {
+    0% {
+      transform: translatey(30px);
+      opacity: 0;
     }
+    100% {
+      transform: translatey(0px);
+      opacity: 1;
+    }
+  }
 
-    @media(max-width: 500px){
-        .useful_links{
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            place-items: center;
-        }
-        .useful_links>*:nth-child(2n + 1):nth-last-of-type(1){
-            grid-column: span 2;
-        }
-        /* .useful_links a{
-            animation: none;
-            transform: translatey(0px);
-            opacity: 1;
-        } */
+  @media (max-width: 768px) {
+    .useful_links {
+      justify-content: center;
     }
+  }
 </style>

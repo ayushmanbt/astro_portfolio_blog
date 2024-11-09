@@ -2,244 +2,243 @@
 import Icon from "./IconContainer.astro";
 
 const technologies = [
-    {
-        name: "HTML5",
-        icon: "cib:html5",
-        lightcolor: "#d53f0e",
-        darkcolor: "#ff8d4b"
-    },
-    {
-        name: "CSS3",
-        icon: "cib:css3",
-        lightcolor: "#053952",
-        darkcolor: "#84ffef"
-    },
-    {
-        name: "JavaScript",
-        icon: "cib:javascript",
-        lightcolor: "#2e7a2e",
-        darkcolor: "#ffd92f"
-    },
-    {
-        name: "TypeScript",
-        icon: "cib:typescript",
-        lightcolor: "#0075c6",
-        darkcolor: "#66b5eb"
-    },
-    {
-        name: "React.js",
-        icon: "cib:react",
-        lightcolor: "#00004e",
-        darkcolor: "#9bd5ff"
-    },
-    {
-        name: "Next.js",
-        icon: "cib:next-js",
-        lightcolor: "#353c55",
-        darkcolor: "#cfd9fd"
-    },
-    {
-        name: "Vue.js",
-        icon: "cib:vue-js",
-        lightcolor: "#304559",
-        darkcolor: "#3daf7d"
-    },
-    {
-        name: "Node.js",
-        icon: "mdi:nodejs",
-        lightcolor: "#2e7a2e",
-        darkcolor: "#85bd00"
-    },
-    {
-        name: "C",
-        icon: "cib:c",
-        lightcolor: "#2d3b8f",
-        darkcolor: "#6599c8"
-    },
-    {
-        name: "Python",
-        icon: "cib:python",
-        lightcolor: "#3674a7",
-        darkcolor: "#fdd446"
-    },
-    {
-        name: "Java",
-        icon: "cib:java",
-        lightcolor: "#2d3b8f",
-        darkcolor: "#ff7649"
-    },
-    {
-        name: "PHP",
-        icon: "cib:php",
-        lightcolor: "#1f6abd",
-        darkcolor: "#cfd9fd"
-    },
-    {
-        name: "MongoDB",
-        icon: "cib:mongodb",
-        lightcolor: "#2f5500",
-        darkcolor: "#C8E0CA"
-    },
-    {
-        name: "MySQL",
-        icon: "cib:mysql",
-        lightcolor: "#147395",
-        darkcolor: "#DE8A03"
-    },
-    {
-        name: "Firebase",
-        icon: "cib:firebase",
-        lightcolor: "#d53f0e",
-        darkcolor: "#FFCA28"
-    },
-    {
-        name: "Blogging",
-        icon: "mdi:pencil",
-        lightcolor: "#101010",
-        darkcolor: "#FCFCFC"
-    },
-    {
-        name: "Teaching",
-        icon: "mdi:graduation-cap",
-        lightcolor: "#101010",
-        darkcolor: "#FCFCFC"
-    }
-]
+  {
+    name: "HTML5",
+    icon: "cib:html5",
+    lightcolor: "#d53f0e",
+    darkcolor: "#ff8d4b",
+  },
+  {
+    name: "CSS3",
+    icon: "cib:css3",
+    lightcolor: "#053952",
+    darkcolor: "#84ffef",
+  },
+  {
+    name: "JavaScript",
+    icon: "cib:javascript",
+    lightcolor: "#2e7a2e",
+    darkcolor: "#ffd92f",
+  },
+  {
+    name: "TypeScript",
+    icon: "cib:typescript",
+    lightcolor: "#0075c6",
+    darkcolor: "#66b5eb",
+  },
+  {
+    name: "React.js",
+    icon: "cib:react",
+    lightcolor: "#00004e",
+    darkcolor: "#9bd5ff",
+  },
+  {
+    name: "Next.js",
+    icon: "cib:next-js",
+    lightcolor: "#353c55",
+    darkcolor: "#cfd9fd",
+  },
+  {
+    name: "Vue.js",
+    icon: "cib:vue-js",
+    lightcolor: "#304559",
+    darkcolor: "#3daf7d",
+  },
+  {
+    name: "Node.js",
+    icon: "mdi:nodejs",
+    lightcolor: "#2e7a2e",
+    darkcolor: "#85bd00",
+  },
+  {
+    name: "C",
+    icon: "cib:c",
+    lightcolor: "#2d3b8f",
+    darkcolor: "#6599c8",
+  },
+  {
+    name: "Python",
+    icon: "cib:python",
+    lightcolor: "#3674a7",
+    darkcolor: "#fdd446",
+  },
+  {
+    name: "Java",
+    icon: "cib:java",
+    lightcolor: "#2d3b8f",
+    darkcolor: "#ff7649",
+  },
+  {
+    name: "PHP",
+    icon: "cib:php",
+    lightcolor: "#1f6abd",
+    darkcolor: "#cfd9fd",
+  },
+  {
+    name: "MongoDB",
+    icon: "cib:mongodb",
+    lightcolor: "#2f5500",
+    darkcolor: "#C8E0CA",
+  },
+  {
+    name: "MySQL",
+    icon: "cib:mysql",
+    lightcolor: "#147395",
+    darkcolor: "#DE8A03",
+  },
+  {
+    name: "Firebase",
+    icon: "cib:firebase",
+    lightcolor: "#d53f0e",
+    darkcolor: "#FFCA28",
+  },
+  {
+    name: "Blogging",
+    icon: "mdi:pencil",
+    lightcolor: "#101010",
+    darkcolor: "#FCFCFC",
+  },
+  {
+    name: "Teaching",
+    icon: "mdi:graduation-cap",
+    lightcolor: "#101010",
+    darkcolor: "#FCFCFC",
+  },
+];
 ---
 
 <div class="technologies">
-    <h2>What technologies am I familiar with?</h2>
-    
-    <div class="tech-container">
-        {
-            technologies.map(tech => 
-                <Icon 
-                    name={tech.name}
-                    icon={tech.icon}
-                    extraClass={tech.icon}
-                    lightcolor={tech.lightcolor}
-                    darkcolor={tech.darkcolor}
-                    isColored={tech.lightcolor ? true : false}
-                />
-            )
-        }
-    </div>
+  <h2>What technologies am I familiar with?</h2>
+
+  <div class="tech-container">
+    {
+      technologies.map((tech) => (
+        <Icon
+          name={tech.name}
+          icon={tech.icon}
+          extraClass={tech.icon}
+          lightcolor={tech.lightcolor}
+          darkcolor={tech.darkcolor}
+          isColored={tech.lightcolor ? true : false}
+        />
+      ))
+    }
+  </div>
 </div>
 
 <style>
-    .tech-container{
-        display: flex;
-        justify-content: center;
-    }
+  .tech-container {
+    display: flex;
+    justify-content: center;
+  }
 
-    .tech-container > *{
-        transform: scale(0);
-    }
+  .tech-container > * {
+    transform: scale(0);
+  }
 
-    @media (max-width: 500px) {
-        .tech-container{
-            justify-content: start;
-        }
+  @media (max-width: 500px) {
+    .tech-container {
+      justify-content: start;
     }
+  }
 </style>
 
 <script>
-    const techContainer = document.querySelector(".tech-container");
-    
-    const delay = (time: number) => new Promise(resolve => {
-        setTimeout(resolve, time);
-    })
+  const techContainer = document.querySelector(".tech-container");
 
-    if(techContainer){
-        let boundingRect = techContainer.getBoundingClientRect();
-        let isAnimating = false;
+  const delay = (time: number) =>
+    new Promise((resolve) => {
+      setTimeout(resolve, time);
+    });
 
-        //initiate them in position
-        techContainer.childNodes.forEach((node,i) => {
-            const modifiedNode = node as HTMLElement
-            modifiedNode.style.transform = `scale(0)`; 
-        })
-        
-        //animationscript
-        const animateTheChips = () => {
+  if (techContainer) {
+    let boundingRect = techContainer.getBoundingClientRect();
+    let isAnimating = false;
 
-            let startX = 0;
-            let startY = 0;
+    let childrenHTMLElements = Array.from(techContainer.children);
 
-            if(window.innerWidth < 500){
-                startX = boundingRect.left - 40;
-                startY = (boundingRect.top + boundingRect.bottom) / 2;
-            }
-            
-            else {
-                startX = (boundingRect.left + boundingRect.right) / 2;
-                startY = boundingRect.bottom - 40;
-            }
+    //initiate them in position
+    childrenHTMLElements.forEach((node) => {
+      const modifiedNode = node as HTMLElement;
+      modifiedNode.style.transform = `scale(0)`;
+    });
 
+    //animationscript
+    const animateTheChips = () => {
+      let startX = 0;
+      let startY = 0;
 
-            techContainer.childNodes.forEach(async(node,i) => {
-                const modifiedNode = node as HTMLElement;
-                const rect = modifiedNode.getBoundingClientRect();
-                
-                const endX = rect.x;
-                const endY = rect.y;
-                
-                let currentX = startX;
-                let currentY = startY;
+      if (window.innerWidth < 500) {
+        startX = boundingRect.left - 40;
+        startY = (boundingRect.top + boundingRect.bottom) / 2;
+      } else {
+        startX = (boundingRect.left + boundingRect.right) / 2;
+        startY = boundingRect.bottom - 40;
+      }
 
-                modifiedNode.style.transform = `translateX(${startX - endX}px) translateY(${startY - endY}px) scale(0)`;            
+      let childrenHTMLElements = Array.from(techContainer.children);
 
-                let scale = 0;
-                
-                await delay(i * 100);
-                
-                const interval = setInterval(() => {
-                    let translateX = currentX - endX;
-                    let translateY = currentY - endY;
-                    
-                    modifiedNode.style.transform = `translateX(${translateX}px) translateY(${translateY}px) scale(${scale})`;
-                    
-                    if(scale < 1){
-                        scale += (1 - scale) / 2;
-                    }
-                    
-                    if(Math.abs(currentX - endX) < 10 && Math.abs(currentY - endY) < 10 ){
-                        
-                        modifiedNode.style.transform = `translateX(0) translateY(0) scale(${1})`;
-                        
-                        clearInterval(interval);   
-                    } 
+      childrenHTMLElements.forEach(async (node, i) => {
+        const modifiedNode = node as HTMLElement;
+        const rect = modifiedNode.getBoundingClientRect();
 
-                    if(endX < currentX){
-                        currentX -= (currentX - endX) / 2
-                    }
-                    if(endX > currentX){
-                        currentX += (endX - currentX) / 2
-                    }
-                    if(endY < currentY){
-                        currentY -= (currentY - endY) / 2
-                    }
-                    if(endY > currentY){
-                        currentY += (endY - currentY) / 2
-                    }
-                }, 100)
-            });
+        const endX = rect.x;
+        const endY = rect.y;
+
+        let currentX = startX;
+        let currentY = startY;
+
+        modifiedNode.style.transform = `translateX(${startX - endX}px) translateY(${startY - endY}px) scale(0)`;
+
+        let scale = 0;
+
+        await delay(i * 100);
+
+        const interval = setInterval(() => {
+          let translateX = currentX - endX;
+          let translateY = currentY - endY;
+
+          modifiedNode.style.transform = `translateX(${translateX}px) translateY(${translateY}px) scale(${scale})`;
+
+          if (scale < 1) {
+            scale += (1 - scale) / 2;
+          }
+
+          if (
+            Math.abs(currentX - endX) < 10 &&
+            Math.abs(currentY - endY) < 10
+          ) {
+            modifiedNode.style.transform = `translateX(0) translateY(0) scale(${1})`;
+
+            clearInterval(interval);
+          }
+
+          if (endX < currentX) {
+            currentX -= (currentX - endX) / 2;
+          }
+          if (endX > currentX) {
+            currentX += (endX - currentX) / 2;
+          }
+          if (endY < currentY) {
+            currentY -= (currentY - endY) / 2;
+          }
+          if (endY > currentY) {
+            currentY += (endY - currentY) / 2;
+          }
+        }, 100);
+      });
+    };
+
+    if (boundingRect.top < window.innerHeight - 200) {
+      animateTheChips();
+    } else {
+      document.addEventListener("scroll", (_) => {
+        boundingRect = techContainer.getBoundingClientRect();
+        if (boundingRect.top < window.innerHeight - 200 && !isAnimating) {
+          animateTheChips();
+          isAnimating = true;
         }
-
-
-        if(boundingRect.top < window.innerHeight - 200){
-            animateTheChips();
-        } 
-        else{
-            document.addEventListener("scroll", (_) => {
-                boundingRect = techContainer.getBoundingClientRect();
-                if(boundingRect.top < window.innerHeight - 200 && !isAnimating){
-                     animateTheChips();
-                     isAnimating = true
-                }
-            })
-        }
-       
-        
+      });
     }
+  }
 </script>
