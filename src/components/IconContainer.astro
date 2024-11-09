@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 const {
   icon,
@@ -16,7 +16,7 @@ const {
 {
   link ? (
     <a class="technology" href={link} target="_blank">
-      <Icon pack="mdi" name={icon} width="24px" />
+      <Icon name={"mdi:" + icon} width="24px" />
 
       <span class="text">{name}</span>
     </a>
