@@ -4,19 +4,31 @@ import InternshipCard from "./InternshipCard.astro";
 import data from "../data/Opportunities.json";
 
 const opportunities = data;
+const op0 = opportunities[0]
 ---
 
-<h2 class="mb-3">My Other Experiences</h2>
+<h2 class="mb-3">My Teaching Experiences</h2>
+<InternshipCard 
+                position={op0.position}
+                company={op0.company}
+                description={op0.description}
+                duration={op0.duration}
+                technologies={op0.technologies}
+            />
 <div class="internships">
     {
-        opportunities.map(op => 
-            <InternshipCard 
+        opportunities.map((op,i) => {
+            if(i == 0){
+                return 
+            }
+            return <InternshipCard 
                 position={op.position}
                 company={op.company}
                 description={op.description}
                 duration={op.duration}
                 technologies={op.technologies}
             />
+        }
         )
     }
 </div>
@@ -25,14 +37,8 @@ const opportunities = data;
 <style>
     .internships{
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 1.2rem;
-    }
-
-    @media (max-width: 1000px) {
-        .internships{
-            grid-template-columns: 1fr 1fr;
-        }
     }
 
 

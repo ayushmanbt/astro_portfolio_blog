@@ -1,9 +1,29 @@
 [
     {
+        "position": "Assistant Professor II",
+        "company": "Adamas University",
+        "description": "Working as an assistant professor at Adamas University teaching students in streams - B.Tech, BCA and MCA full stack software development, cryptography and cybersecurity and programming languages",
+        "duration": "09.2024 - Now",
+        "technologies": [
+            {
+                "icon": "cib:c",
+                "name": "Lanugage"
+            },
+            {
+                "icon": "mdi:lock-alert",
+                "name": "CyberSecurity"
+            },
+            {
+                "icon": "cib:javascript",
+                "name": "Javascript"
+            }
+        ]
+    },
+    {
         "position": "Grader",
         "company": "Arizona State University",
         "description": "Wroked as a grader in Arizona State University for the Advanced Operating Systems Course in Spring 2023, under professor Adil Ahmad. Helped with assignment and exam grading as well as doubt clearing for students regarding assignments",
-        "duration": "01.2023 - now",
+        "duration": "01.2023 - 12.2023",
         "technologies": [
             {
                 "icon": "cib:c",
@@ -33,18 +53,6 @@
                 "icon": "cib:java",
                 "name": "Java"
 
-            }
-        ]
-    },
-    {
-        "position": "Content Writer (Contract)",
-        "company": "Agatton",
-        "description": "Gathered intel and reported about latest news in tech",
-        "duration": "12.2018 - 10.2019",
-        "technologies": [
-            {
-                "icon": "cib:wordpress",
-                "name": "Content Writing"
             }
         ]
     }
