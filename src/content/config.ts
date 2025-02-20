@@ -17,6 +17,10 @@ const blogCollection = defineCollection({
     })
 })
 
+const classNoteCollection = defineCollection({
+    
+})
+
 export const collections = {
     'blog': blogCollection
 }
